@@ -43,24 +43,6 @@ namespace CadastroUsuario.Controllers
         [HttpPost]
         public ActionResult Add(UserViewModel model)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View(model);
-            //}
-
-            //using (cursomvcEntities db = new cursomvcEntities())
-            //{
-            //    user oUser = new user();
-            //    oUser.idState = 1;
-            //    oUser.email = model.Email;
-            //    oUser.edad = model.Edad;
-            //    oUser.password = model.Password;
-
-            //    db.users.Add(oUser);
-            //    db.SaveChanges();
-
-
-            //}
 
             return Redirect(Url.Content("~/User/Index"));
 
@@ -70,14 +52,6 @@ namespace CadastroUsuario.Controllers
         {
             EditUserViewModel model = new EditUserViewModel();
 
-            //using (var db = new cursomvcEntities())
-            //{
-            //    var oUser = db.users.Find(Id);
-            //    model.Edad = (int)oUser.edad;
-            //    model.Email = oUser.email;
-            //    model.Id = oUser.Id;
-
-            //}
             return View(model);
         }
 
@@ -89,40 +63,12 @@ namespace CadastroUsuario.Controllers
                 return View(model);
             }
 
-            //using (var db = new cursomvcEntities())
-            //{
-            //    var oUser = db.users.Find(model.Id);
-            //    oUser.email = model.Email;
-            //    oUser.edad = model.Edad;
-
-            //    if (model.Password != null && model.Password.Trim() != "")
-            //    {
-            //        oUser.password = model.Password;
-            //    }
-
-            //    db.Entry(oUser).State = System.Data.Entity.EntityState.Modified;
-            //    db.SaveChanges();
-
-
-            //}
-
             return Redirect(Url.Content("~/User/Index"));
 
         }
         [HttpPost]
         public ActionResult Delete(int Id)
         {
-            //using (var db = new cursomvcEntities())
-            //{
-            //    var oUser = db.users.Find(Id);
-            //    oUser.idState = 3;
-
-            //    db.Entry(oUser).State = System.Data.Entity.EntityState.Modified;
-            //    db.SaveChanges();
-
-
-            //}
-
             return Content("1");
 
         }
