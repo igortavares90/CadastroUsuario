@@ -1,5 +1,7 @@
 ﻿using CadastroUsuario.Models;
+using CadastroUsuario.Models.TableViewModels;
 using CadastroUsuario.Models.ViewModels;
+using CadastroUsuario.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,25 +15,23 @@ namespace CadastroUsuario.Controllers
         // GET: User
         public ActionResult Index()
         {
-            //List<UserTableViewModel> lst = null;
-            //using (cursomvcEntities db = new cursomvcEntities())
-            //{
-            //    lst = (from d in db.users
-            //           where d.idState == 1
-            //           orderby d.email
-            //           select new UserTableViewModel
-            //           {
-            //               Email = d.email,
-            //               Id = d.Id,
-            //               Edad = d.edad
-            //           }).ToList();
+            UsuarioService usuarioService = new UsuarioService();
 
+            var userList = usuarioService.GetUsers();
 
+            List<UserTableViewModel> lst = null;
 
-            //}
-            //return View(lst);
+            lst = (from d in userList
+                    select new UserTableViewModel
+                    {
+                        UsuarioId = d.UsuarioId,
+                        Nome = d.Nome,
+                        Login = d.Login,
+                        Senha = d.Senha,
+                        IsAdmin = d.IsAdmin
+                    }).ToList();
 
-            return View();
+            return View(lst);
         }
 
         [HttpGet]
