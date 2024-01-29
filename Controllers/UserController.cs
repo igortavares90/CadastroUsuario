@@ -41,12 +41,23 @@ namespace CadastroUsuario.Controllers
 
         }
         [HttpPost]
-        public ActionResult Add(UserViewModel model)
+        public ActionResult Add(UserViewModel userViewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View(userViewModel);
             }
+
+            UsuarioService usuarioService = new UsuarioService();
+
+            UsuarioModel usuarioModel = new UsuarioModel();
+
+            usuarioModel.Nome = userViewModel.Nome;
+            usuarioModel.Login = userViewModel.Login;
+            usuarioModel.Senha = userViewModel.Senha;
+            usuarioModel.IsAdmin = userViewModel.IsAdmin;
+
+            usuarioService.InsertUser(usuarioModel);
 
             return Redirect(Url.Content("~/User/Index"));
         }

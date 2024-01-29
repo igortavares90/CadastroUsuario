@@ -1,17 +1,32 @@
-﻿@{
-    Layout = null;
+﻿@model CadastroUsuario.Models.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "Adicionar Usuario";
 }
 
-<!DOCTYPE html>
+<h2>@ViewBag.Title</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Add", "User", FormMethod.Post, new { role = "form", @class = "" }))
+        {
+            
+            @Html.ValidationMessage("error", new { @class = "text-danger" })
+
+            @Html.LabelFor(d => d.Nome)
+            @Html.TextBoxFor(d => d.Nome, new { @class = "form-control" })
+            @Html.ValidationMessage("Nome", new { @class = "text-danger" })
+
+            @Html.LabelFor(d => d.Login)
+            @Html.TextBoxFor(d => d.Login, new { @class = "form-control" })
+            @Html.ValidationMessage("Login", new { @class = "text-danger" })
+
+            @Html.LabelFor(d => d.Senha)
+            @Html.PasswordFor(d => d.Senha, new { @class = "form-control" })
+            @Html.ValidationMessage("Senha", new { @class = "text-danger" })
+
+            <div style="text-align:right">
+                <input type="submit" class="btn btn-success" value="Guardar" />
+            </div>
+        }
     </div>
-</body>
-</html>
+</div>

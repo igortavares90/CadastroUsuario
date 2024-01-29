@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <input type="button" class="btn btn-primary" value="nuevo" onclick="document.location.href='@Url.Content("~/User/Add")'" />
+        <input type="button" class="btn btn-primary" value="Novo" onclick="document.location.href='@Url.Content("~/User/Add")'" />
     </div>
 </div>
 <br />
@@ -30,7 +30,7 @@
             <td>@oElemento.Senha</td>
             <td>@oElemento.IsAdmin</td>
             <td>
-                <input type="button" onclick="jsDelete(@oElemento.UsuarioId)" value="Eliminar" class="btn btn-danger" />
+                <input type="button" onclick="jsDelete(@oElemento.UsuarioId)" value="Excluir" class="btn btn-danger" />
                 <input type="button" value="Editar" class="btn btn-danger" onclick="document.location.href='@Url.Content("~/User/Edit/"+oElemento.UsuarioId)'" />
             </td>
         </tr>            }
