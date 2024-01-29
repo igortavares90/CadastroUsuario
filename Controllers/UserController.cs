@@ -43,9 +43,12 @@ namespace CadastroUsuario.Controllers
         [HttpPost]
         public ActionResult Add(UserViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
             return Redirect(Url.Content("~/User/Index"));
-
         }
 
         public ActionResult Edit(int Id)
