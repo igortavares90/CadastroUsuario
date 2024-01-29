@@ -1,35 +1,38 @@
-﻿using CadastroUsuario.Models;
+﻿using CadastroUsuario.Interfaces;
+using CadastroUsuario.Models;
 using CadastroUsuario.Models.TableViewModels;
 using CadastroUsuario.Models.ViewModels;
 using CadastroUsuario.Service;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace CadastroUsuario.Controllers
 {
     public class UserController : Controller
     {
+        private IUsuarioService _usuarioService;
+        public UserController()
+        {
+            _usuarioService = new UsuarioService();
+        }
+
         // GET: User
         public ActionResult Index()
         {
-            UsuarioService usuarioService = new UsuarioService();
-
-            var userList = usuarioService.GetUsers();
+            var userList = _usuarioService.GetUsers();
 
             List<UserTableViewModel> lst = null;
 
             lst = (from d in userList
-                    select new UserTableViewModel
-                    {
-                        UsuarioId = d.UsuarioId,
-                        Nome = d.Nome,
-                        Login = d.Login,
-                        Senha = d.Senha,
-                        IsAdmin = d.IsAdmin
-                    }).ToList();
+                   select new UserTableViewModel
+                   {
+                       UsuarioId = d.UsuarioId,
+                       Nome = d.Nome,
+                       Login = d.Login,
+                       Senha = d.Senha,
+                       IsAdmin = d.IsAdmin
+                   }).ToList();
 
             return View(lst);
         }
@@ -48,8 +51,6 @@ namespace CadastroUsuario.Controllers
                 return View(userViewModel);
             }
 
-            UsuarioService usuarioService = new UsuarioService();
-
             UsuarioModel usuarioModel = new UsuarioModel();
 
             usuarioModel.Nome = userViewModel.Nome;
@@ -57,7 +58,7 @@ namespace CadastroUsuario.Controllers
             usuarioModel.Senha = userViewModel.Senha;
             usuarioModel.IsAdmin = userViewModel.IsAdmin;
 
-            usuarioService.InsertUser(usuarioModel);
+            _usuarioService.InsertUser(usuarioModel);
 
             return Redirect(Url.Content("~/User/Index"));
         }

@@ -24,6 +24,10 @@
             @Html.PasswordFor(d => d.Senha, new { @class = "form-control" })
             @Html.ValidationMessage("Senha", new { @class = "text-danger" })
 
+            @Html.LabelFor(d => d.IsAdmin)
+            @Html.CheckBoxFor(d => d.IsAdmin, new { @class = "form-control" })
+            @Html.ValidationMessage("IsAdmin", new { @class = "text-danger" })
+
             <div style="text-align:right">
                 <input type="submit" class="btn btn-success" value="Guardar" />
             </div>

@@ -152,6 +152,7 @@
     <Compile Include="Interfaces\IDapperORM.cs" />
     <Compile Include="Interfaces\ILogAcessRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Interfaces\IUsuarioService.cs" />
     <Compile Include="Models\LogAccessModel.cs" />
     <Compile Include="Models\TableViewModels\UserTableViewModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />

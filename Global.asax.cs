@@ -1,6 +1,7 @@
 using CadastroUsuario.Data;
 using CadastroUsuario.Interfaces;
 using CadastroUsuario.Repository;
+using CadastroUsuario.Service;
 using SimpleInjector;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -21,6 +22,7 @@ namespace CadastroUsuario
 
             container.Register<IUserRepository, UserRepository>(Lifestyle.Singleton);
             container.Register<IDapperORM, DapperORM>(Lifestyle.Singleton);
+            container.Register<IUsuarioService, UsuarioService>(Lifestyle.Singleton);
 
         }
     }
